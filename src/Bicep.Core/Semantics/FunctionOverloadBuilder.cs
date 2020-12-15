@@ -79,7 +79,7 @@ namespace Bicep.Core.Semantics
             this.FixedParameters.Clear();
             for (int i = 0; i < parameterTypes.Length; i++)
             {
-                this.FixedParameters.Add(CreateFixedParameter(parameterTypes[i], i));
+                this.FixedParameters.Add(CreateFixedParameter(parameterTypes[i], i, required: i < minimumArgumentCount));
             }
             
             this.MinimumArgumentCount = minimumArgumentCount;
@@ -102,7 +102,7 @@ namespace Bicep.Core.Semantics
             this.FixedParameters.Clear();
             for (int i = 0; i < minimumArgumentCount; i++)
             {
-                this.FixedParameters.Add(CreateFixedParameter(parameterType, i));
+                this.FixedParameters.Add(CreateFixedParameter(parameterType, i, required: i < minimumArgumentCount));
             }
 
             this.MinimumArgumentCount = minimumArgumentCount;
@@ -121,6 +121,6 @@ namespace Bicep.Core.Semantics
 
         protected VariableFunctionParameter CreateVariableParameter(TypeSymbol type) => new VariableFunctionParameter("vararg", type);
 
-        protected FixedFunctionParameter CreateFixedParameter(TypeSymbol type, int index) => new FixedFunctionParameter($"arg{index}", type);
+        protected FixedFunctionParameter CreateFixedParameter(TypeSymbol type, int index, bool required) => new FixedFunctionParameter($"arg{index}", type, required);
     }
 }

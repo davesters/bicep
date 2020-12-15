@@ -1,7 +1,7 @@
 [
   {
     "name": "deployment",
-    "fixedParameterTypes": [],
+    "fixedParameters": [],
     "minimumArgumentCount": 0,
     "maximumArgumentCount": 0,
     "flags": "default",
@@ -10,7 +10,7 @@
   },
   {
     "name": "environment",
-    "fixedParameterTypes": [],
+    "fixedParameters": [],
     "minimumArgumentCount": 0,
     "maximumArgumentCount": 0,
     "flags": "default",
@@ -19,13 +19,28 @@
   },
   {
     "name": "extensionResourceId",
-    "fixedParameterTypes": [
-      "string",
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg2",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 3,
-    "variableParameterType": "string",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "string"
+    },
     "flags": "default",
     "typeSignature": "(param0: string, param1: string, param2: string, ... : string): string",
     "parameterTypeSignatures": [
@@ -37,12 +52,32 @@
   },
   {
     "name": "pickZones",
-    "fixedParameterTypes": [
-      "string",
-      "string",
-      "string",
-      "int",
-      "int"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg2",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg3",
+        "type": "int",
+        "required": false
+      },
+      {
+        "name": "arg4",
+        "type": "int",
+        "required": false
+      }
     ],
     "minimumArgumentCount": 3,
     "maximumArgumentCount": 5,
@@ -58,9 +93,17 @@
   },
   {
     "name": "providers",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": false
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 2,
@@ -73,10 +116,22 @@
   },
   {
     "name": "reference",
-    "fixedParameterTypes": [
-      "string",
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "arg2",
+        "type": "string",
+        "required": false
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 3,
@@ -90,7 +145,7 @@
   },
   {
     "name": "resourceGroup",
-    "fixedParameterTypes": [],
+    "fixedParameters": [],
     "minimumArgumentCount": 0,
     "maximumArgumentCount": 0,
     "flags": "default",
@@ -99,8 +154,12 @@
   },
   {
     "name": "resourceGroup",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -112,9 +171,17 @@
   },
   {
     "name": "resourceGroup",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -127,12 +194,23 @@
   },
   {
     "name": "resourceId",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
-    "variableParameterType": "string",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "string"
+    },
     "flags": "default",
     "typeSignature": "(param0: string, param1: string, ... : string): string",
     "parameterTypeSignatures": [
@@ -143,7 +221,7 @@
   },
   {
     "name": "subscription",
-    "fixedParameterTypes": [],
+    "fixedParameters": [],
     "minimumArgumentCount": 0,
     "maximumArgumentCount": 0,
     "flags": "default",
@@ -152,8 +230,12 @@
   },
   {
     "name": "subscription",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -165,12 +247,23 @@
   },
   {
     "name": "subscriptionResourceId",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
-    "variableParameterType": "string",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "string"
+    },
     "flags": "default",
     "typeSignature": "(param0: string, param1: string, ... : string): string",
     "parameterTypeSignatures": [
@@ -181,7 +274,7 @@
   },
   {
     "name": "tenant",
-    "fixedParameterTypes": [],
+    "fixedParameters": [],
     "minimumArgumentCount": 0,
     "maximumArgumentCount": 0,
     "flags": "default",
@@ -190,12 +283,23 @@
   },
   {
     "name": "tenantResourceId",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
-    "variableParameterType": "string",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "string"
+    },
     "flags": "default",
     "typeSignature": "(param0: string, param1: string, ... : string): string",
     "parameterTypeSignatures": [

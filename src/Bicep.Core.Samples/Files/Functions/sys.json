@@ -1,8 +1,12 @@
 [
   {
     "name": "any",
-    "fixedParameterTypes": [
-      "any"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "any",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -14,8 +18,12 @@
   },
   {
     "name": "array",
-    "fixedParameterTypes": [
-      "any"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "any",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -27,8 +35,12 @@
   },
   {
     "name": "base64",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -40,8 +52,12 @@
   },
   {
     "name": "base64ToJson",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -53,8 +69,12 @@
   },
   {
     "name": "base64ToString",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -66,8 +86,12 @@
   },
   {
     "name": "bool",
-    "fixedParameterTypes": [
-      "any"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "any",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -79,11 +103,18 @@
   },
   {
     "name": "coalesce",
-    "fixedParameterTypes": [
-      "any"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "any",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
-    "variableParameterType": "any",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "any"
+    },
     "flags": "default",
     "typeSignature": "(param0: any, ... : any): any",
     "parameterTypeSignatures": [
@@ -93,11 +124,18 @@
   },
   {
     "name": "concat",
-    "fixedParameterTypes": [
-      "array"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
-    "variableParameterType": "array",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "array"
+    },
     "flags": "default",
     "typeSignature": "(param0: array, ... : array): array",
     "parameterTypeSignatures": [
@@ -107,11 +145,18 @@
   },
   {
     "name": "concat",
-    "fixedParameterTypes": [
-      "bool | int | string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "bool | int | string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
-    "variableParameterType": "bool | int | string",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "bool | int | string"
+    },
     "flags": "default",
     "typeSignature": "(param0: bool | int | string, ... : bool | int | string): string",
     "parameterTypeSignatures": [
@@ -121,9 +166,17 @@
   },
   {
     "name": "contains",
-    "fixedParameterTypes": [
-      "object",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "object",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -136,9 +189,17 @@
   },
   {
     "name": "contains",
-    "fixedParameterTypes": [
-      "array",
-      "any"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "any",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -151,9 +212,17 @@
   },
   {
     "name": "contains",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -166,8 +235,12 @@
   },
   {
     "name": "dataUri",
-    "fixedParameterTypes": [
-      "any"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "any",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -179,8 +252,12 @@
   },
   {
     "name": "dataUriToString",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -192,10 +269,22 @@
   },
   {
     "name": "dateTimeAdd",
-    "fixedParameterTypes": [
-      "string",
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg2",
+        "type": "string",
+        "required": false
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 3,
@@ -209,8 +298,12 @@
   },
   {
     "name": "empty",
-    "fixedParameterTypes": [
-      "array | null | object | string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array | null | object | string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -222,9 +315,17 @@
   },
   {
     "name": "endsWith",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -237,8 +338,12 @@
   },
   {
     "name": "first",
-    "fixedParameterTypes": [
-      "array"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -250,8 +355,12 @@
   },
   {
     "name": "first",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -263,11 +372,18 @@
   },
   {
     "name": "format",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
-    "variableParameterType": "any",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "any"
+    },
     "flags": "default",
     "typeSignature": "(param0: string, ... : any): string",
     "parameterTypeSignatures": [
@@ -277,11 +393,18 @@
   },
   {
     "name": "guid",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
-    "variableParameterType": "string",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "string"
+    },
     "flags": "default",
     "typeSignature": "(param0: string, ... : string): string",
     "parameterTypeSignatures": [
@@ -291,9 +414,17 @@
   },
   {
     "name": "indexOf",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -306,8 +437,12 @@
   },
   {
     "name": "int",
-    "fixedParameterTypes": [
-      "int | string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "int | string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -319,12 +454,23 @@
   },
   {
     "name": "intersection",
-    "fixedParameterTypes": [
-      "object",
-      "object"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "object",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "object",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
-    "variableParameterType": "object",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "object"
+    },
     "flags": "default",
     "typeSignature": "(param0: object, param1: object, ... : object): object",
     "parameterTypeSignatures": [
@@ -335,12 +481,23 @@
   },
   {
     "name": "intersection",
-    "fixedParameterTypes": [
-      "array",
-      "array"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "array",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
-    "variableParameterType": "array",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "array"
+    },
     "flags": "default",
     "typeSignature": "(param0: array, param1: array, ... : array): array",
     "parameterTypeSignatures": [
@@ -351,8 +508,12 @@
   },
   {
     "name": "json",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -364,8 +525,12 @@
   },
   {
     "name": "last",
-    "fixedParameterTypes": [
-      "array"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -377,8 +542,12 @@
   },
   {
     "name": "last",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -390,9 +559,17 @@
   },
   {
     "name": "lastIndexOf",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -405,8 +582,12 @@
   },
   {
     "name": "length",
-    "fixedParameterTypes": [
-      "array | object | string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array | object | string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -418,11 +599,18 @@
   },
   {
     "name": "max",
-    "fixedParameterTypes": [
-      "int"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "int",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
-    "variableParameterType": "int",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "int"
+    },
     "flags": "default",
     "typeSignature": "(param0: int, ... : int): int",
     "parameterTypeSignatures": [
@@ -432,8 +620,12 @@
   },
   {
     "name": "max",
-    "fixedParameterTypes": [
-      "array"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -445,11 +637,18 @@
   },
   {
     "name": "min",
-    "fixedParameterTypes": [
-      "int"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "int",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
-    "variableParameterType": "int",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "int"
+    },
     "flags": "default",
     "typeSignature": "(param0: int, ... : int): int",
     "parameterTypeSignatures": [
@@ -459,8 +658,12 @@
   },
   {
     "name": "min",
-    "fixedParameterTypes": [
-      "array"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -472,7 +675,7 @@
   },
   {
     "name": "newGuid",
-    "fixedParameterTypes": [],
+    "fixedParameters": [],
     "minimumArgumentCount": 0,
     "maximumArgumentCount": 0,
     "flags": "paramDefaultsOnly",
@@ -481,10 +684,22 @@
   },
   {
     "name": "padLeft",
-    "fixedParameterTypes": [
-      "int | string",
-      "int",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "int | string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "int",
+        "required": true
+      },
+      {
+        "name": "arg2",
+        "type": "string",
+        "required": false
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 3,
@@ -498,9 +713,17 @@
   },
   {
     "name": "range",
-    "fixedParameterTypes": [
-      "int",
-      "int"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "int",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "int",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -513,10 +736,22 @@
   },
   {
     "name": "replace",
-    "fixedParameterTypes": [
-      "string",
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg2",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 3,
     "maximumArgumentCount": 3,
@@ -530,9 +765,17 @@
   },
   {
     "name": "skip",
-    "fixedParameterTypes": [
-      "array",
-      "int"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "int",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -545,9 +788,17 @@
   },
   {
     "name": "skip",
-    "fixedParameterTypes": [
-      "string",
-      "int"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "int",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -560,9 +811,17 @@
   },
   {
     "name": "split",
-    "fixedParameterTypes": [
-      "string",
-      "array | string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "array | string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -575,9 +834,17 @@
   },
   {
     "name": "startsWith",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -590,8 +857,12 @@
   },
   {
     "name": "string",
-    "fixedParameterTypes": [
-      "any"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "any",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -603,10 +874,22 @@
   },
   {
     "name": "substring",
-    "fixedParameterTypes": [
-      "string",
-      "int",
-      "int"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "int",
+        "required": true
+      },
+      {
+        "name": "arg2",
+        "type": "int",
+        "required": false
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 3,
@@ -620,9 +903,17 @@
   },
   {
     "name": "take",
-    "fixedParameterTypes": [
-      "array",
-      "int"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "int",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -635,9 +926,17 @@
   },
   {
     "name": "take",
-    "fixedParameterTypes": [
-      "string",
-      "int"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "int",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -650,8 +949,12 @@
   },
   {
     "name": "toLower",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -663,8 +966,12 @@
   },
   {
     "name": "toUpper",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -676,8 +983,12 @@
   },
   {
     "name": "trim",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -689,12 +1000,23 @@
   },
   {
     "name": "union",
-    "fixedParameterTypes": [
-      "object",
-      "object"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "object",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "object",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
-    "variableParameterType": "object",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "object"
+    },
     "flags": "default",
     "typeSignature": "(param0: object, param1: object, ... : object): object",
     "parameterTypeSignatures": [
@@ -705,12 +1027,23 @@
   },
   {
     "name": "union",
-    "fixedParameterTypes": [
-      "array",
-      "array"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "array",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
-    "variableParameterType": "array",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "array"
+    },
     "flags": "default",
     "typeSignature": "(param0: array, param1: array, ... : array): array",
     "parameterTypeSignatures": [
@@ -721,11 +1054,18 @@
   },
   {
     "name": "uniqueString",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
-    "variableParameterType": "string",
+    "variableParameter": {
+      "namePrefix": "vararg",
+      "type": "string"
+    },
     "flags": "default",
     "typeSignature": "(param0: string, ... : string): string",
     "parameterTypeSignatures": [
@@ -735,9 +1075,17 @@
   },
   {
     "name": "uri",
-    "fixedParameterTypes": [
-      "string",
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "arg1",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 2,
     "maximumArgumentCount": 2,
@@ -750,8 +1098,12 @@
   },
   {
     "name": "uriComponent",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -763,8 +1115,12 @@
   },
   {
     "name": "uriComponentToString",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": true
+      }
     ],
     "minimumArgumentCount": 1,
     "maximumArgumentCount": 1,
@@ -776,8 +1132,12 @@
   },
   {
     "name": "utcNow",
-    "fixedParameterTypes": [
-      "string"
+    "fixedParameters": [
+      {
+        "name": "arg0",
+        "type": "string",
+        "required": false
+      }
     ],
     "minimumArgumentCount": 0,
     "maximumArgumentCount": 1,

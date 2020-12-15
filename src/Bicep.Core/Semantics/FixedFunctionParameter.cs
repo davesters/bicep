@@ -7,14 +7,17 @@ namespace Bicep.Core.Semantics
 {
     public class FixedFunctionParameter
     {
-        public FixedFunctionParameter(string name, TypeSymbol type)
+        public FixedFunctionParameter(string name, TypeSymbol type, bool required)
         {
             this.Name = name;
             this.Type = type;
+            this.Required = required;
         }
 
         public string Name { get; }
 
         public TypeSymbol Type { get; }
+
+        public bool Required { get; }
     }
 }

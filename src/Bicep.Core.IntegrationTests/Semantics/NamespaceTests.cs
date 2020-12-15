@@ -70,25 +70,29 @@ namespace Bicep.Core.IntegrationTests.Semantics
             return $"{info.Name}_{((NamespaceSymbol) candiddate).Name}";
         }
 
-        private OverloadItem Convert(FunctionOverload overload) =>
-            new OverloadItem(
+        private OverloadRecord Convert(FunctionOverload overload) =>
+            new OverloadRecord(
                 overload.Name,
-                overload.FixedParameters.Select(fixedParam => fixedParam.Type.Name).ToImmutableArray(),
+                overload.FixedParameters.Select(fixedParam=>new FixedParameterRecord(fixedParam.Name, fixedParam.Type.Name, fixedParam.Required)).ToImmutableArray(),
                 overload.MinimumArgumentCount,
                 overload.MaximumArgumentCount,
-                overload.VariableParameter?.Type.Name,
+                overload.VariableParameter == null ? null : new VariableParameterRecord(overload.VariableParameter.NamePrefix, overload.VariableParameter.Type.Name),
                 overload.Flags,
                 overload.TypeSignature,
                 overload.ParameterTypeSignatures);
 
-        private record OverloadItem(
+        private record OverloadRecord(
             string Name,
-            ImmutableArray<string> FixedParameterTypes,
+            ImmutableArray<FixedParameterRecord> FixedParameters,
             int MinimumArgumentCount,
             int? MaximumArgumentCount,
-            string? VariableParameterType,
+            VariableParameterRecord? VariableParameter,
             FunctionFlags Flags,
             string TypeSignature,
             ImmutableArray<string> ParameterTypeSignatures);
+
+        private record FixedParameterRecord(string Name, string Type, bool Required);
+
+        private record VariableParameterRecord(string NamePrefix, string Type);
     }
 }
