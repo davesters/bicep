@@ -73,10 +73,10 @@ namespace Bicep.Core.IntegrationTests.Semantics
         private OverloadItem Convert(FunctionOverload overload) =>
             new OverloadItem(
                 overload.Name,
-                overload.FixedParameterTypes.Select(type => type.Name).ToImmutableArray(),
+                overload.FixedParameters.Select(fixedParam => fixedParam.Type.Name).ToImmutableArray(),
                 overload.MinimumArgumentCount,
                 overload.MaximumArgumentCount,
-                overload.VariableParameterType?.Name,
+                overload.VariableParameter?.Type.Name,
                 overload.Flags,
                 overload.TypeSignature,
                 overload.ParameterTypeSignatures);

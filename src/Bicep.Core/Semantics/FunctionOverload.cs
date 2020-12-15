@@ -35,8 +35,8 @@ namespace Bicep.Core.Semantics
             this.ReturnTypeBuilder = returnTypeBuilder;
             this.MinimumArgumentCount = minimumArgumentCount;
             this.MaximumArgumentCount = maximumArgumentCount;
-            this.FixedParameterTypes = fixedTypes;
-            this.VariableParameterType = variableParameterType;
+            this.FixedParameters = fixedTypes.Select((fixedType, i) => new FixedFunctionParameter($"arg{i}", fixedType)).ToImmutableArray();
+            this.VariableParameter = variableParameterType == null ? null : new VariableFunctionParameter("vararg", variableParameterType);
             this.Flags = flags;
 
             var builder = ImmutableArray.CreateBuilder<string>();
@@ -57,13 +57,13 @@ namespace Bicep.Core.Semantics
 
         public string Name { get; }
 
-        public ImmutableArray<TypeSymbol> FixedParameterTypes { get; }
+        public ImmutableArray<FixedFunctionParameter> FixedParameters { get; }
 
         public int MinimumArgumentCount { get; }
 
         public int? MaximumArgumentCount { get; }
 
-        public TypeSymbol? VariableParameterType { get; }
+        public VariableFunctionParameter? VariableParameter { get; }
 
         public ReturnTypeBuilderDelegate ReturnTypeBuilder { get; }
 
@@ -101,22 +101,22 @@ namespace Bicep.Core.Semantics
                 var argumentType = argumentTypes[i];
                 TypeSymbol expectedType;
 
-                if (i < this.FixedParameterTypes.Length)
+                if (i < this.FixedParameters.Length)
                 {
-                    expectedType = this.FixedParameterTypes[i];
+                    expectedType = this.FixedParameters[i].Type;
                 }
                 else
                 {
-                    if (this.VariableParameterType == null)
+                    if (this.VariableParameter == null)
                     {
                         // Theoretically this shouldn't happen, becase it already passed argument count checking, either:
                         // - The function takes 0 argument - argumentTypes must be empty, so it won't enter the loop
                         // - The function take at least one argument - when i >= FixedParameterTypes.Length, VariableParameterType
                         //   must not be null, otherwise, the function overload has invalid parameter count definition.
-                        throw new ArgumentException($"Got unexpected null value for {nameof(this.VariableParameterType)}. Ensure the function overload definition is correct: '{this.TypeSignature}'.");
+                        throw new ArgumentException($"Got unexpected null value for {nameof(this.VariableParameter)}. Ensure the function overload definition is correct: '{this.TypeSignature}'.");
                     }
 
-                    expectedType = this.VariableParameterType;
+                    expectedType = this.VariableParameter.Type;
                 }
 
                 if (TypeValidator.AreTypesAssignable(argumentType, expectedType) != true)
