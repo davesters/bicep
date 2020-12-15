@@ -13,20 +13,15 @@ namespace Bicep.Core.Semantics
     {
         public delegate TypeSymbol ReturnTypeBuilderDelegate(IEnumerable<FunctionArgumentSyntax> arguments);
 
-        public FunctionOverload(string name, TypeSymbol returnType, int minimumArgumentCount, int? maximumArgumentCount, IEnumerable<TypeSymbol> fixedParameterTypes, TypeSymbol? variableParameterType, FunctionFlags flags = FunctionFlags.Default)
-            : this(name, args => returnType, returnType, minimumArgumentCount, maximumArgumentCount, fixedParameterTypes, variableParameterType, flags)
-        {
-        }
-        
-        public FunctionOverload(string name, ReturnTypeBuilderDelegate returnTypeBuilder, TypeSymbol returnType, int minimumArgumentCount, int? maximumArgumentCount, IEnumerable<TypeSymbol> fixedParameterTypes, TypeSymbol? variableParameterType, FunctionFlags flags = FunctionFlags.Default)
+        public FunctionOverload(string name, ReturnTypeBuilderDelegate returnTypeBuilder, TypeSymbol returnType, int minimumArgumentCount, int? maximumArgumentCount, IEnumerable<FixedFunctionParameter> fixedParameters, VariableFunctionParameter? variableParameter, FunctionFlags flags = FunctionFlags.Default)
         {
             if (maximumArgumentCount.HasValue && maximumArgumentCount.Value < minimumArgumentCount)
             {
                 throw new ArgumentException($"{nameof(maximumArgumentCount.Value)} cannot be less than {nameof(minimumArgumentCount)}.");
             }
 
-            var fixedTypes = fixedParameterTypes.ToImmutableArray();
-            if (fixedTypes.Length < minimumArgumentCount && variableParameterType == null)
+            this.FixedParameters = fixedParameters.ToImmutableArray();
+            if (this.FixedParameters.Length < minimumArgumentCount && variableParameter == null)
             {
                 throw new ArgumentException("Not enough argument types are specified.");
             }
@@ -35,19 +30,19 @@ namespace Bicep.Core.Semantics
             this.ReturnTypeBuilder = returnTypeBuilder;
             this.MinimumArgumentCount = minimumArgumentCount;
             this.MaximumArgumentCount = maximumArgumentCount;
-            this.FixedParameters = fixedTypes.Select((fixedType, i) => new FixedFunctionParameter($"arg{i}", fixedType)).ToImmutableArray();
-            this.VariableParameter = variableParameterType == null ? null : new VariableFunctionParameter("vararg", variableParameterType);
+            
+            this.VariableParameter = variableParameter;
             this.Flags = flags;
 
             var builder = ImmutableArray.CreateBuilder<string>();
-            for (int i = 0; i < fixedTypes.Length; i++)
+            for (int i = 0; i < this.FixedParameters.Length; i++)
             {
-                builder.Add($"param{i}: {fixedTypes[i]}");
+                builder.Add($"param{i}: {this.FixedParameters[i].Type}");
             }
 
-            if (variableParameterType != null)
+            if (variableParameter != null)
             {
-                builder.Add($"... : {variableParameterType}");
+                builder.Add($"... : {variableParameter.Type}");
             }
 
             this.ParameterTypeSignatures = builder.ToImmutable();

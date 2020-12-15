@@ -210,7 +210,11 @@ namespace Bicep.Core.Semantics.Namespaces
                 .WithFlags(FunctionFlags.RequiresInlining)
                 .Build();
 
-            yield return new FunctionWildcardOverload("list*", LanguageConstants.Any, 2, 3, new[] {LanguageConstants.String, LanguageConstants.String, LanguageConstants.Object}, null, new Regex("^list[a-zA-Z]*"), FunctionFlags.RequiresInlining);
+            yield return new FunctionWildcardOverloadBuilder("list*", new Regex("^list[a-zA-Z]*"))
+                .WithReturnType(LanguageConstants.Any)
+                .WithOptionalFixedParameters(2, LanguageConstants.String, LanguageConstants.String, LanguageConstants.Object)
+                .WithFlags(FunctionFlags.RequiresInlining)
+                .Build();
         }
 
         public AzNamespaceSymbol(ResourceScopeType resourceScope)
