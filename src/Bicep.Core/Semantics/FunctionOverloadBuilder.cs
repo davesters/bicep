@@ -112,6 +112,30 @@ namespace Bicep.Core.Semantics
             return this;
         }
 
+        public FunctionOverloadBuilder WithRequiredParameter(string name, TypeSymbol type, string description)
+        {
+            this.FixedParameters.Add(new FixedFunctionParameter(name, type, required: true, description));
+            return this;
+        }
+
+        public FunctionOverloadBuilder WithOptionalParameter(string name, TypeSymbol type, string description)
+        {
+            this.FixedParameters.Add(new FixedFunctionParameter(name, type, required: false, description));
+            return this;
+        }
+
+        public FunctionOverloadBuilder WithRequiredVariableParameter(string namePrefix, TypeSymbol type, string description)
+        {
+            // TODO:
+            this.VariableParameter = new VariableFunctionParameter(namePrefix, type, description);
+        }
+
+        public FunctionOverloadBuilder WithOptionalVariableParameter(string namePrefix, TypeSymbol type, string description)
+        {
+            // TODO:
+            this.VariableParameter = new VariableFunctionParameter(namePrefix, type, description);
+        }
+
         public FunctionOverloadBuilder WithFlags(FunctionFlags flags)
         {
             this.Flags = flags;
@@ -119,8 +143,14 @@ namespace Bicep.Core.Semantics
             return this;
         }
 
-        protected VariableFunctionParameter CreateVariableParameter(TypeSymbol type) => new VariableFunctionParameter("vararg", type);
+        protected virtual void Validate()
+        {
+            // required must precede optional
+            // can't have optional with varargs
+        }
 
-        protected FixedFunctionParameter CreateFixedParameter(TypeSymbol type, int index, bool required) => new FixedFunctionParameter($"arg{index}", type, required);
+        protected VariableFunctionParameter CreateVariableParameter(TypeSymbol type) => new VariableFunctionParameter("vararg", type, description: null);
+
+        protected FixedFunctionParameter CreateFixedParameter(TypeSymbol type, int index, bool required) => new FixedFunctionParameter($"arg{index}", type, required, description: null);
     }
 }
